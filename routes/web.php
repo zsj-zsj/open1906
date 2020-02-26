@@ -15,12 +15,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('phpinfo', function () {
+    phpinfo();
+});
+
 
 Route::get('reg','Index\Login@reg');  //注册
 Route::post('doreg','Index\Login@doreg');  //执行注册
 
-Route::get('login','Index\Login@login');  //手机号登录页面
+Route::get('login','Index\Login@login');  //登录页面
 Route::post('dologin','Index\Login@dologin');  //执行登录
-Route::get('logemail','Index\Login@logemail');  //邮箱号登录页面
-Route::post('dologemail','Index\Login@dologemail');  //执行登录
 

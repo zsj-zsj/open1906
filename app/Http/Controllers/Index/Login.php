@@ -13,7 +13,7 @@ class Login extends Controller
     public function upload($file){
         if(request()->file($file)->isValid()){
             $img=request()->file($file);
-            $imgimg=$img->store('upload');
+            $imgimg=$img->store('images');
             return $imgimg;
         }
         exit('文件未上传或上传出错');
@@ -51,7 +51,7 @@ class Login extends Controller
         // dd($post);
         $phone=$post['l_phone'];
 
-        $res=Reg::where('l_phone','=',$phone)->first();
+        $res=Reg::where('l_phone','=',$phone)->orwhere('l_email','=',$phone)->first();
         // dd($res);
         if($res){
             if(Hash::check($post['l_pass'],$res['l_pass'])){
@@ -60,30 +60,7 @@ class Login extends Controller
                 return redirect('login')->with('a','密码不正确');;
             }
         }else{
-            return redirect('login')->with('a','手机号不存在');;
-        }
-    }
-
-    public function logemail(){
-        return view('index/logemail');
-    }
-
-
-    public function dologemail(){
-        $post=request()->input();
-        // dd($post);
-        $email=$post['l_email'];
-
-        $res=Reg::where('l_email','=',$email)->first();
-        // dd($res);
-        if($res){
-            if(Hash::check($post['l_pass'],$res['l_pass'])){
-                echo 1;
-            }else{
-                return redirect('logemail')->with('a','密码不正确');;
-            }
-        }else{
-            return redirect('logemail')->with('a','邮箱不存在');;
+            return redirect('login')->with('a','手机号或邮箱不存在');;
         }
     }
 }

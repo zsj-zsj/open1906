@@ -9,8 +9,8 @@
 </head>
 <body>
         <div class="page-header">
-                <h2 style="text-align:center">手机号登录
-                       <small><a href="{{url('logemail')}}">邮箱登录</a></small>
+                <h2 style="text-align:center">登录
+                       <small></small>
                </h2>
            </div>
         {{session('a')}}   
@@ -20,7 +20,7 @@
                    用户名
                 </label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="l_phone"  placeholder="请输入手机号" id="inputError">
+                    <input type="text" class="form-control" name="l_phone"  placeholder="请输入手机号或邮箱" id="inputError">
                 </div>
             </div>
             <div class="form-group has-error">
