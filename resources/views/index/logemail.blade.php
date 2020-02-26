@@ -9,18 +9,18 @@
 </head>
 <body>
         <div class="page-header">
-                <h2 style="text-align:center">手机号登录
-                       <small><a href="{{url('logemail')}}">邮箱登录</a></small>
+                <h2 style="text-align:center">邮箱登录
+                       <small><a href="{{url('login')}}">手机号登录</a></small>
                </h2>
            </div>
         {{session('a')}}   
-    <form class="form-horizontal" role="form" action="{{url('dologin')}}" method="post">
+    <form class="form-horizontal" role="form" action="{{url('dologemail')}}" method="post">
             <div class="form-group has-error">
                 <label class="col-sm-2 control-label" for="inputError" >
                    用户名
                 </label>
                 <div class="col-sm-8">
-                    <input type="text" class="form-control" name="l_phone"  placeholder="请输入手机号" id="inputError">
+                    <input type="text" class="form-control" name="l_email"  placeholder="请输入邮箱" id="inputError">
                 </div>
             </div>
             <div class="form-group has-error">

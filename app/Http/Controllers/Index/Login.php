@@ -60,7 +60,30 @@ class Login extends Controller
                 return redirect('login')->with('a','密码不正确');;
             }
         }else{
-            return redirect('login')->with('a','手机号或邮箱不存在');;
+            return redirect('login')->with('a','手机号不存在');;
+        }
+    }
+
+    public function logemail(){
+        return view('index/logemail');
+    }
+
+
+    public function dologemail(){
+        $post=request()->input();
+        // dd($post);
+        $email=$post['l_email'];
+
+        $res=Reg::where('l_email','=',$email)->first();
+        // dd($res);
+        if($res){
+            if(Hash::check($post['l_pass'],$res['l_pass'])){
+                echo 1;
+            }else{
+                return redirect('logemail')->with('a','密码不正确');;
+            }
+        }else{
+            return redirect('logemail')->with('a','邮箱不存在');;
         }
     }
 }
