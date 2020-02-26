@@ -14,3 +14,10 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('reg','Index\Login@reg');  //注册
+Route::post('doreg','Index\Login@doreg');  //执行注册
+
+Route::get('login','Index\Login@login');  //登录页面
+Route::post('dologin','Index\Login@dologin');  //执行注册
