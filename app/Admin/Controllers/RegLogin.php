@@ -15,11 +15,11 @@ class RegLogin extends AdminController
      *
      * @var string
      */
-    protected $title = '登录注册';
+    protected $title = '用户管理';
 
     /**
      * Make a grid builder.
-     *
+     *表格
      * @return Grid
      */
     protected function grid()
@@ -38,8 +38,8 @@ class RegLogin extends AdminController
         $grid->column('l_phone', __('电话'));
         $grid->column('l_email', __('邮箱'));
         $grid->column('created_at', __('Created at'));
-        $grid->column('l_pass', __('密码'));
-        $grid->column('updated_at', __('Updated at'));
+        // $grid->column('l_pass', __('密码'));
+        // $grid->column('updated_at', __('Updated at'));
 
         return $grid;
     }

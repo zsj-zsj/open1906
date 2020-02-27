@@ -12,4 +12,5 @@ Route::group([
     
     $router->get('/', 'HomeController@index')->name('admin.home');
     $router->resource('RegLogin', RegLogin::class);
+    $router->resource('appids', Appids::class);
 });
