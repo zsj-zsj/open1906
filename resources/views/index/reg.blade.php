@@ -16,6 +16,14 @@
     <form class="form-horizontal" role="form" action="{{url('doreg')}}" method="post" enctype="multipart/form-data">
         <div class="form-group has-error">
             <label class="col-sm-2 control-label" for="inputError">
+                用户名
+            </label>
+            <div class="col-sm-8">
+                <input type="text" class="form-control" name="l_name" id="inputError">
+            </div>
+        </div>
+        <div class="form-group has-error">
+            <label class="col-sm-2 control-label" for="inputError">
                 公司名
             </label>
             <div class="col-sm-8">

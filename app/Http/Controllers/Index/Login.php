@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Index;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Model\Reg;   //注册 登录
+use App\Model\Appid;   //注册 登录
 use Illuminate\Support\Facades\Hash;
 
 class Login extends Controller
@@ -36,6 +37,19 @@ class Login extends Controller
 
         $res=Reg::create($post);
         if($res){
+
+            $appid=Appid::appid($post['l_name']);
+            // echo $appid;echo "<br>";
+            $secret=Appid::secret();
+            // echo $secret;echo "<br>";
+            //appid secret  入库
+            $data=[
+                'l_id'=>$res['l_id'],
+                'app_id'=>$appid,
+                'secret'=>$secret,
+            ];
+            Appid::create($data);
+
             return redirect('login');
         }else{
             return redirect('reg'); 
@@ -51,7 +65,7 @@ class Login extends Controller
         // dd($post);
         $phone=$post['l_phone'];
 
-        $res=Reg::where('l_phone','=',$phone)->orwhere('l_email','=',$phone)->first();
+        $res=Reg::where('l_phone','=',$phone)->orwhere('l_email','=',$phone)->orwhere('l_name','=',$phone)->first();
         // dd($res);
         if($res){
             if(Hash::check($post['l_pass'],$res['l_pass'])){

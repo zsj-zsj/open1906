@@ -27,6 +27,7 @@ class RegLogin extends AdminController
         $grid = new Grid(new Reg());
 
         $grid->column('l_id', __('L id'));
+        $grid->column('l_name', __('用户名'));
         $grid->column('l_company', __('公司名'));
         $grid->column('l_legal', __('法人'));
         $grid->column('l_address', __('公司地址'));
@@ -54,6 +55,7 @@ class RegLogin extends AdminController
         $show = new Show(Reg::findOrFail($id));
 
         $show->field('l_id', __('L id'));
+        $show->field('l_name', __('l name'));
         $show->field('l_company', __('L company'));
         $show->field('l_legal', __('L legal'));
         $show->field('l_address', __('L address'));
@@ -75,7 +77,8 @@ class RegLogin extends AdminController
     protected function form()
     {
         $form = new Form(new Reg());
-
+        
+        $form->text('l_name', __('用户名'));
         $form->text('l_company', __('公司名'));
         $form->text('l_legal', __('法人'));
         $form->text('l_address', __('公司地址'));
