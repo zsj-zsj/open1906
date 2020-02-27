@@ -26,3 +26,5 @@ Route::post('doreg','Index\Login@doreg');  //执行注册
 Route::get('login','Index\Login@login');  //登录页面
 Route::post('dologin','Index\Login@dologin');  //执行登录
 
+Route::get('center','Index\Login@center');   //个人中心
+
