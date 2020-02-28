@@ -28,5 +28,13 @@ Route::post('dologin','Index\Login@dologin');  //执行登录
 
 Route::get('center','Index\Login@center');   //个人中心
 
+//其他接口调用 必须有access_token
 Route::get('getAccessToken','Index\ApiController@getAccessToken');   //获取acctentoken
+
+
+Route::prefix('/api')->middleware('AccessToken')->group(function(){
+    Route::get('test','Index\ApiTest@test');
+});
+
+
 

@@ -27,10 +27,10 @@ class ApiController extends Controller
         //得到 正确的 appid secret  生成accesstoken
         $str=$appid.$secret.time().rand().Str::random('16');
         $access_token=sha1($str).md5($str);
-        $token=substr($access_token,10,10);
+        $token=substr($access_token,10,30);
         // echo $token;
         //存redis
-        $redis_key='h:access_token'.$token;
+        $redis_key='h:access_token:'.$token;
         $appinfo=[
             'appid'=>$app['app_id'],
             'time'=>date('Y-m-d H:i:s')
