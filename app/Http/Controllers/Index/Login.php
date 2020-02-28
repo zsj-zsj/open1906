@@ -29,8 +29,44 @@ class Login extends Controller
     }
 
     //执行注册
-    public function doreg(){
+    public function doreg(Request $request){
+        $request->validate([
+            //验证
+            'l_name'=>'required|alpha_dash|between:3,7|unique:reg',
+            'l_company'=>'required',
+            'l_legal'=>'required',
+            'l_address'=>'required',
+            'l_logo'=>'required|image',
+            'l_phone'=>'required|unique:reg',
+            'l_pass'=>'required|between:3,7|alpha_dash',
+            'l_email'=>'required|email|unique:reg',
+            'l_pass22'=>'same:l_pass'
+        ],[
+            //错误提示
+            'l_name.required'=>'用户名不能为空',
+            'l_name.alpha_dash'=>'用户名中文字母和数字，以及破折号和下划线',
+            'l_name.between'=>'用户名长度3-7位',
+            'l_name.unique'=>'用户名已存在',
+            'l_company.required'=>'请输入公司名',
+            'l_legal.required'=>'请输入法人',
+            'l_address.required'=>'请输入公司地址',
+            'l_logo.required'=>'请上传营业执照',
+            'l_logo.image'=>'请上传图片',
+            'l_phone.required'=>'请输入手机号',
+            'l_phone.unique'=>'手机号已注册',
+            'l_email.required'=>'请输入邮箱',
+            'l_email.email'=>'邮箱格式不对',
+            'l_email.unique'=>'邮箱已注册',
+            'l_pass.required'=>'请输入密码',
+            'l_pass.between'=>'密码长度3-7字母和数字,以及破折号和下划线',
+            'l_pass22.same'=>'密码不一致',
+        ]);
         $post=request()->input();
+        unset($post['l_pass22']);
+        $reg='/^1[345789]\d{9}$/';
+        if(!preg_match($reg,$post['l_phone'])){     
+            return redirect('reg')->with('a','手机号格式不对');
+        }
 
         if(request()->hasFile('l_logo')){    
             $post['l_logo']=$this->upload('l_logo');
@@ -89,10 +125,10 @@ class Login extends Controller
                 echo "登陆成功";
                 
             }else{
-                return redirect('login')->with('a','密码不正确');;
+                return redirect('login')->with('a','密码不正确');
             }
         }else{
-            return redirect('login')->with('a','手机号或邮箱不存在');;
+            return redirect('login')->with('a','手机号或邮箱不存在');
         }
     }
 

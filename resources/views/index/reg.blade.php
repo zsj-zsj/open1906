@@ -20,6 +20,7 @@
             </label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" name="l_name" id="inputError">
+                <b style="color:red"> @php echo $errors->first('l_name'); @endphp </b>
             </div>
         </div>
         <div class="form-group has-error">
@@ -28,6 +29,7 @@
             </label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" name="l_company" id="inputError">
+                <b style="color:red"> @php echo $errors->first('l_company'); @endphp </b>
             </div>
         </div>
         <div class="form-group has-error">
@@ -36,6 +38,7 @@
             </label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" name="l_legal" id="inputError">
+                <b style="color:red"> @php echo $errors->first('l_legal'); @endphp </b>
             </div>
         </div>
         <div class="form-group has-error">
@@ -44,6 +47,7 @@
             </label>
             <div class="col-sm-8">
                 <input type="text" class="form-control"  name="l_address" id="inputError">
+                <b style="color:red"> @php echo $errors->first('l_address'); @endphp </b>
             </div>
         </div>
         <div class="form-group has-error">
@@ -52,6 +56,7 @@
             </label>
             <div class="col-sm-8">
                 <input type="file" class="form-control" name="l_logo" id="inputError">
+                <b style="color:red"> @php echo $errors->first('l_logo'); @endphp </b>
             </div>
         </div>
         <div class="form-group has-error">
@@ -60,7 +65,9 @@
             </label>
             <div class="col-sm-8">
                 <input type="text" class="form-control"  name="l_phone" id="inputError">
-            </div>
+                <b style="color:red"> {{session('a')}}  </b>
+                <b style="color:red"> @php echo $errors->first('l_phone'); @endphp </b>  
+            </div> 
         </div>
         <div class="form-group has-error">
             <label class="col-sm-2 control-label" for="inputError">
@@ -68,6 +75,7 @@
             </label>
             <div class="col-sm-8">
                 <input type="text" class="form-control" name="l_email" id="inputError">
+                <b style="color:red"> @php echo $errors->first('l_email'); @endphp </b>
             </div>
         </div>
         <div class="form-group has-error">
@@ -76,6 +84,16 @@
             </label>
             <div class="col-sm-8">
                 <input type="password" class="form-control" name="l_pass" id="inputError">
+                <b style="color:red"> @php echo $errors->first('l_pass'); @endphp </b>
+            </div>
+        </div>
+        <div class="form-group has-error">
+            <label class="col-sm-2 control-label" for="inputError">
+                确认密码
+            </label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control" name="l_pass22" id="inputError">
+                <b style="color:red"> @php echo $errors->first('l_pass22'); @endphp </b>
             </div>
         </div>
         <div class="form-group has-error">
