@@ -28,3 +28,5 @@ Route::post('dologin','Index\Login@dologin');  //执行登录
 
 Route::get('center','Index\Login@center');   //个人中心
 
+Route::get('getAccessToken','Index\ApiController@getAccessToken');   //获取acctentoken
+
