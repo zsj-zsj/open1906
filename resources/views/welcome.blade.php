@@ -85,8 +85,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="http://open.1906.com/reg">注册</a>
-                    <a href="http://open.1906.com/login">登录</a>
+                    <a href="/reg">注册</a>
+                    <a href="/login">登录</a>
                 </div>
             </div>
         </div>

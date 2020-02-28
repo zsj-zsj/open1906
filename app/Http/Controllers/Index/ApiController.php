@@ -19,9 +19,9 @@ class ApiController extends Controller
             echo "缺少参数";die;
         }
 
-        $app=Appid::where('app_id','=',$appid)->orwhere('secret','=',$secret)->first();
-        if(!$app){
-            echo "参数不正确";
+        $app=Appid::where('app_id','=',$appid)->first();
+        if($appid!=$app['app_id'] || $secret!=$app['secret']){
+            echo "参数不正确";die;
         }
 
         //得到 正确的 appid secret  生成accesstoken
