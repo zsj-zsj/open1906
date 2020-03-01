@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Cookie; 
 use Illuminate\Support\Str; 
 use Illuminate\Support\Facades\Redis;
+use App\Model\Github;
 
 class Login extends Controller
 {
@@ -142,11 +143,18 @@ class Login extends Controller
         $user_info=Redis::hgetAll($redis_key);  //取  user
     
         $id=$user_info['l_id'];
-        $app=Appid::where('id','=',$id)->first()->toArray();  //app
+        $app=Appid::where('id','=',$id)->first();  //app
 
-        echo "欢迎来到：".$user_info['l_name']."的用户中心";echo "<br>";
-        echo "APPID：".$app['app_id'];echo "<br>";
-        echo "SECRET：".$app['secret'];echo "<br>";
+        if($app){
+            echo "欢迎来到：".$user_info['l_name']."的用户中心";echo "<br>";
+            echo "APPID：".$app['app_id'];echo "<br>";
+            echo "SECRET：".$app['secret'];echo "<br>";
+        }else{
+            echo "欢迎使用github登录,用户ID：".$id; echo "<br>";
+            echo "暂无内容";
+        }
+
+        
 
     }
 }

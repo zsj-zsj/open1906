@@ -36,5 +36,7 @@ Route::prefix('/api')->middleware('AccessToken')->group(function(){
     Route::get('test','Index\ApiTest@test');
 });
 
+//gituplogin
+Route::get('gituplogin','Index\Github@gituplogin');
 
 
