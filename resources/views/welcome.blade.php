@@ -89,7 +89,7 @@
                     <a href="/login">登录</a>
                 </div>
                 <div class="links">
-                    <a href="https://github.com/login/oauth/authorize?client_id=093c81570cebe9b343be&redirect_uri=http://open.1906.com/gituplogin">Github登录</a>
+                    <a href="https://github.com/login/oauth/authorize?client_id=093c81570cebe9b343be&redirect_uri=http://open.zsjshaojie.top/gituplogin">Github登录</a>
                 </div>
             </div>
         </div>
