@@ -75,7 +75,7 @@ class Github extends Controller
         //将token存redis
         $redis_key='uesr:token:'.$token;  //redis的key 
         $user_info=[                     //和取的数据对应
-            'l_id'=>uid,
+            'l_id'=>$uid,
             'time'=>date('Y-m-d H:i:s')
         ];
         Redis::hMset($redis_key,$user_info);   //哈希
