@@ -143,7 +143,7 @@ class Login extends Controller
         $user_info=Redis::hgetAll($redis_key);  //取  user
     
         $id=$user_info['l_id'];
-        $app=Appid::where('id','=',$id)->first();  //app
+        $app=Appid::where('l_id','=',$id)->first();  //app
 
         if($app){
             echo "欢迎来到：".$user_info['l_name']."的用户中心";echo "<br>";

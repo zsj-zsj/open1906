@@ -16,9 +16,6 @@ class Github extends Controller
 {
     public function gituplogin(){
         $code=$_GET['code']; 
-        if(empty($code)){
-            echo "code不对";die;
-        }
         // echo $code;
         $url='https://github.com/login/oauth/access_token';
         $client= new client();
@@ -36,9 +33,7 @@ class Github extends Controller
         $json=$response->getBody();
         $access_token=json_decode($json,true);
         // dd($a=$access_token['access_token']);
-        if(empty($access_token)){
-            echo "没有access_token";die;
-        }
+        
         $urls='https://api.github.com/user';
         $responses=$client->request('GET',$urls,[
             'headers'=>[
