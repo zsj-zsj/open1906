@@ -52,15 +52,15 @@ class Github extends Controller
 
         $git_user=Git::where('github_id','=',$user['id'])->first();
         if($git_user){
-
+            $uid = $git_user->id;
         }else{
             $user_email=[
                 'l_email'=>$user['email']
             ];
-            $reg=Reg::insertGetId($user_email);     //把 gitub email 入到user  返回主键id
-
+            $uid=Reg::insertGetId($user_email);     //把 gitub email 入到user  返回主键id
+            
             $git_user_info=[
-                'l_id'=>$reg,                      //user 主键id  入到gitub  表  
+                'l_id'=>$uid,                      //user 主键id  入到gitub  表  
                 'github_id'=>$user['id'],
                 'location'=>$user['location'],
                 'email'=>$user['email']
@@ -75,7 +75,7 @@ class Github extends Controller
         //将token存redis
         $redis_key='uesr:token:'.$token;  //redis的key 
         $user_info=[                     //和取的数据对应
-            'l_id'=>$git_user['l_id'],
+            'l_id'=>uid,
             'time'=>date('Y-m-d H:i:s')
         ];
         Redis::hMset($redis_key,$user_info);   //哈希
